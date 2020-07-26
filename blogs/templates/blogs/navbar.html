@@ -1,0 +1,83 @@
+{% load static %}
+
+<div class="header">
+		<div class="container">
+			<div class="blog-grid-left">
+				<a href="#"><img src="#" class="img-responsive" alt=""></a>
+			</div>
+
+				<div class="head-nav">
+					<span class="menu"> </span>
+						<ul class="cl-effect-1">
+							<li class="active"><a href="{% url 'blogs:display' %}">Home</a></li>
+
+							{% if request.user.is_authenticated %}
+							<li>
+								<a href="{% url 'useraccounts:blog_list' author=request.user.username author_id=request.user.id %}">
+									Your Posts
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'blogs:create' %}">
+									Create Posts
+								</a>
+							</li>
+							<li>
+								<a class="navbar-link dropdown-toggle" href="{% url 'useraccounts:edit' author_id=request.user.id %}" role="button" data-toggle="dropdown">
+									<img width="30px" height="30px" class="img-rounded"
+										 src="{% static 'blogs/images/icon.svg' %} "
+									alt="avatar" width="25" height="25" >
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a class="dropdown-submenu" href="#">
+										Edit Profile
+									</a>
+
+								<div class="dropdown-togglespan"></div>
+								<a class="dropdown-submenu" href="{% url 'useraccounts:logout' %}">
+									Logout
+								</a>
+								</div>
+							</li>
+<!--							<li class="nav-item avatar dropdown">-->
+<!--        						<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"-->
+<!--          								aria-haspopup="true" aria-expanded="false">-->
+<!--          						<img src="" class="img-circle" width="25" height="25"-->
+<!--            							alt="avatar image">-->
+<!--        						</a>-->
+<!--&lt;!&ndash;								rounded-circle z-depth-0&ndash;&gt;-->
+<!--        						<div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"-->
+<!--          							aria-labelledby="navbarDropdownMenuLink-55">-->
+<!--          						<a class="dropdown-item" href="#">Action</a>-->
+<!--						        <a class="dropdown-item" href="#">Another action</a>-->
+<!--          						<a class="dropdown-item" href="#">Something else here</a>-->
+<!--        						</div>-->
+<!--      						</li>-->
+
+							<li><a href="{% url 'useraccounts:logout' %}">Logout</a></li>
+
+							{% else %}
+
+							<li><a href="{% url 'useraccounts:login' %}">Login</a></li>
+
+							<li><a href="{% url 'useraccounts:signup' %}">Register</a></li>
+
+										<div class="clearfix"></div>
+							{% endif %}
+						</ul>
+				</div>
+						<!-- script-for-nav -->
+							<script>
+								$( "span.menu" ).click(function() {
+								  $( ".head-nav ul" ).slideToggle(300, function() {
+									// Animation complete.
+								  });
+								});
+							</script>
+						<!-- script-for-nav -->
+
+
+
+					<div class="clearfix"> </div>
+		</div>
+	</div>

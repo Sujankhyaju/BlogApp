@@ -1,0 +1,86 @@
+{{% extends 'blogs/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="container">
+	<div class="col-md-9 bann-right">
+
+		<!-- nam-matis -->
+		<div class="nam-matis">
+            {% for post in Blogs %}
+			<div class="nam-matis-top">
+                <div class="col-md-6 nam-matis-1">
+                    <h3 class='font-weight-regular'><a href="{% url 'blogs:detail' post.id %}">{{ post.title }}</a></h3>
+                    <h5 class="text-muted font-weight-light">
+                        {{ post.author.first_name }}</a> | Published at: {{ post.created }} |
+
+                      </h5>
+                </div>
+                <div class="description">
+                    <p class="pl-0 pt-3 pr-3 pb-3 mt-3">
+                        {{ post.body | truncatewords:"100" }}
+                    </p>
+                  </div>
+                <div class="clearfix"> </div>
+            </div>
+            {% endfor %}
+
+            <!-- {% for post in data %}
+			<div class="nam-matis-top">
+                <div class="col-md-6 nam-matis-1">
+                    <a href="single.html"><img src="#" class="img-responsive" alt=""></a>
+                    <h3><a href="#">{{ post.title }}</a></h3>
+                    <p>{{post.content}}</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            {% endfor %} -->
+        </div>
+    </div>
+		<!-- nam-matis -->
+	<div class="col-md-3 bann-left">
+		<!-- <div class="b-search">
+			<form>
+				<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+				<input type="submit" value="">
+			</form>
+		</div> -->
+        <h3>Recent Posts</h3>
+        <!-- display latest blogs -->
+		<div class="blo-top">
+			<div class="blog-grids">
+                {% for recent in featured %}
+				<div class="blog-grid-left">
+					<a href="single.html"><img src="{% static 'blogs/images/1.jpg' %} " class="img-responsive" alt=""></a>
+				</div>
+				<div class="blog-grid-right">
+					<h4><a href="{% url 'blogs:detail' recent.id %}">{{ recent.title | truncatewords:"3" }} </a></h4>
+					<p>{{ recent.body | truncatewords:"10" }} </p>
+				</div>
+                <div class="clearfix"> </div>
+                {% endfor %}
+			</div>
+
+		</div>
+        <h3>Authors</h3>
+        <!-- display namelist of authors-->
+		<div class="blo-top">
+            {% for author in authors %}
+			<li><a href="#">||   {{ author.first_name}}</a></li>
+			<!-- <li><a href="#">||   Finibus Bonorum et</a></li>
+			<li><a href="#">||   Treatise on the theory</a></li>
+			<li><a href="#">||   Characteristic words</a></li>
+			<li><a href="#">||   combined with a handful</a></li>
+            <li><a href="#">||   which looks reasonable</a></li> -->
+            {% endfor %}
+		</div>
+
+
+	</div>
+	<div class="clearfix"> </div>
+
+</div>
+{% endblock content %}

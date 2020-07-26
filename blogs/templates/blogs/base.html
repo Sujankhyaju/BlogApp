@@ -1,0 +1,54 @@
+{% load static %}
+{% load humanize %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+ <title>{% block title %} Blog {% endblock title %}</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Voguish Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+
+
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700' rel='stylesheet' type='text/css'>
+	<link href="{% static 'blogs/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all">
+	<link href="{% static 'blogs/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+	<script src="{% static 'blogs/js/jquery.min.js' %}"></script>
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<script src="{% static 'blogs/js/responsiveslides.min.js' %}"></script>
+	<script>
+    	$(function () {
+    		$("#slider").responsiveSlides({
+				auto: true,
+				nav: true,
+				speed: 500,
+				namespace: "callbacks",
+				pager: true,
+			});
+		});
+	
+ 	 </script>
+
+
+</head>
+<body>
+<!-- header -->
+<div class="container">
+	{% include 'blogs/navbar.html' %}
+	
+	{% block content %}
+    {% endblock content %}
+
+	{% include 'blogs/footer.html' %}
+</div>
+
+    
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+
+{% extends 'blogs/base.html' %}
+{% block title %}
+{{ request.user.email }} Posts
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="row my-2">
+  <div class="offset-1 col-3 mt-3">
+
+    <div class="card sticky-top bg-light shadow-lg">
+      <img
+        width="100px"
+        height="200px"
+        class="card-img-top rounded-circle p-4"
+        src="{% if  user.avatar %}/media/{{user.avatar}}{% else %}/static/img/anonymous.png{% endif %}"
+        alt="{{user.email}}"
+      />
+      <div class="card-body">
+        <h5> PROFILE :</h5>
+        <div class="border-bottom border-warning"></div>
+        <p  class="lead">{% if user.first_name %}
+          {{user.first_name|capfirst}} {{user.last_name|capfirst}}
+          {% else %} {{user.email}} {% endif %}</p>
+
+        <h5>Bio:</h5>
+        <div class="border-bottom border-warning"></div>
+        <p  class="text-justify">{% if user.bio %}
+           {{user.bio}} {% else %} --- {% endif %}</p>
+
+
+           
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

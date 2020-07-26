@@ -1,0 +1,78 @@
+{% extends 'blogs/base.html' %}
+{% block title %}
+BlogPosts|{{ objects.title }}
+
+{% endblock %}
+
+{% block content %}
+<!-- header -->
+	<!-- Blog -->
+	<div class="container">
+		<div class="blog">
+
+		<div class="blog-content">
+					<div class="blog-content-left">
+						<div class="blog-articals">
+						{% for blog in blogs %}
+						<div class="blog-artical">
+							<div class="blog-artical-info">
+								<div class="blog-artical-info-head">
+									<h2><a href="#">{{ blog.title }}</a></h2>
+									<h6>Posted on, {{ blog.created }} by <a href="#">{{blog.author.first_name}}</a></h6>
+								</div>
+								<div class="blog-artical-info-text">
+									<p class="pl-0 pt-3 pr-3 pb-3 mt-3">{{ blog.body | truncatewords:"100" }}<a href="{% url 'blogs:detail' blog.id %}">[...]</a></p>
+								</div>
+								<!-- <div class="artical-links">
+		  						 	<ul>
+		  						 		<li><small> </small><span>june 14, 2013</span></li>
+		  						 		<li><a href="#"><small class="admin"> </small><span>admin</span></a></li>
+		  						 		<li><a href="#"><small class="no"> </small><span>No comments</span></a></li>
+		  						 		<li><a href="#"><small class="posts"> </small><span>View posts</span></a></li>
+		  						 		<li><a href="#"><small class="link"> </small><span>permalink</span></a></li>
+		  						 	</ul>
+		  						 </div> -->
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						{% endfor%}
+						<!-- <div class="media">
+							<img class="mr-3" src="..." alt="Generic placeholder image">
+							<div class="media-body">
+							  <h5 class="mt-0">Media heading</h5>
+							  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+							</div>
+						  </div>	 -->
+					</div>
+					<!--start-blog-pagenate-->
+							<!-- <nav>
+										  <ul class="pagination">
+											<li>
+											  <a href="#" aria-label="Previous">
+												<span aria-hidden="true">«</span>
+											  </a>
+											</li>
+											<li><a href="#">1</a></li>
+											<li><a href="#">2</a></li>
+											<li><a href="#">3</a></li>
+											<li><a href="#">4</a></li>
+											<li><a href="#">5</a></li>
+											<li>
+											  <a href="#" aria-label="Next">
+												<span aria-hidden="true">»</span>
+											  </a>
+											</li>
+										  </ul>
+										</nav> -->
+				<!--//End-blog-pagenate-->
+					</div>
+
+					</div>
+					<div class="clearfix"> </div>
+
+				</div>
+		</div>
+		<!-- /Blog -->
+
+
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- header -->
+	<!-- Blog -->
+	<div class="container">
+		<div class="blog">
+
+		<div class="blog-content">
+					<div class="blog-content-left">
+						<div class="blog-articals">
+						{% for blog in posts %}
+						<div class="blog-artical">
+							<div class="blog-artical-info">
+								<div class="blog-artical-info-head">
+									<h2><a href="#">{{ blog.title }}</a></h2>
+									<h2>Posted on {{ blog.created }} by <a href="#">{{ blog.author_id }}</a></h2>
+								</div>
+								<div class="blog-artical-info-text">
+									<p class="pl-0 pt-3 pr-3 pb-3 mt-3">{{ blog.body | truncatewords:"100" }}<a href="{% url 'blogs:detail' blog.id %}">[Read More]</a></p>
+								</div>
+
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						{% endfor%}
+
+					</div>
+					<!--start-blog-pagenate-->
+							<!-- <nav>
+										  <ul class="pagination">
+											<li>
+											  <a href="#" aria-label="Previous">
+												<span aria-hidden="true">«</span>
+											  </a>
+											</li>
+											<li><a href="#">1</a></li>
+											<li><a href="#">2</a></li>
+											<li><a href="#">3</a></li>
+											<li><a href="#">4</a></li>
+											<li><a href="#">5</a></li>
+											<li>
+											  <a href="#" aria-label="Next">
+												<span aria-hidden="true">»</span>
+											  </a>
+											</li>
+										  </ul>
+										</nav> -->
+				<!--//End-blog-pagenate-->
+					</div>
+
+					</div>
+					<div class="clearfix"> </div>
+
+				</div>
+		</div>
+		<!-- /Blog -->
+
+
+{% endblock content %}
